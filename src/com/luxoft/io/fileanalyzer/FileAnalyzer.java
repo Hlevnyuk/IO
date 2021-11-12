@@ -1,4 +1,4 @@
-package com.luxsoft.io.fileanalyzer;
+package com.luxoft.io.fileanalyzer;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class FileAnalyzer {
         inputStream.read(contentArray);
         return new String(contentArray);
     }
-    public static void searchAndCountTheWord(String filePath, String wordSearch) throws IOException {
+    public static String searchAndCountTheWord(String filePath, String wordSearch) throws IOException {
         int count = 0;
         String text = readContent(filePath);
         String[] words = text.toLowerCase().replaceAll("[-.?!)(,:]", "").split("\\s");
@@ -26,8 +26,9 @@ public class FileAnalyzer {
         }
         String result = "The word " + "'" + wordSearch + "'"+ " meets " + count + " times in this file";
         System.out.println(result);
+        return result;
     }
-    public static void searchSentenceWithTheWord(String filePath, String wordFind) throws IOException {
+    public static List<String> searchSentenceWithTheWord(String filePath, String wordFind) throws IOException {
         String text = readContent(filePath);
         String[] sentences = text.toLowerCase().split("(?<=[.!?])\\s");
         List<String> result = new ArrayList<>();
@@ -37,5 +38,6 @@ public class FileAnalyzer {
                 result.add(sentence);
             }
         }
+        return result;
     }
 }

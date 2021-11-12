@@ -1,4 +1,4 @@
-package com.luxsoft.io.filemanager;
+package com.luxoft.io.filemanager;
 import java.io.*;
 import java.util.Objects;
 public class FileManager {
